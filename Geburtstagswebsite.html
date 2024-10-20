@@ -35,6 +35,39 @@
             stroke: red; /* Umrandung des Textes */
             stroke-width: 0.1vw; /* Proportionales Strokewidth */
         }
+	Um die Videos zentriert und leicht nach links und rechts versetzt anzuordnen, können wir mit Flexbox arbeiten, um die Basiszentrierung zu steuern, und dann die einzelnen Videos mit margin anpassen, um sie leicht nach links oder rechts zu verschieben.
+
+Hier ist der angepasste Code, um deine Videos so zu positionieren:
+Code mit zentrierten und versetzten Videos:
+
+html
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alles Gute Nadja</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: radial-gradient(circle, #f7ec74, #ffffff); /* Radialer Farbverlauf: Hellgelb nach Weiß */
+            flex-direction: column;
+        }
+
+        /* Container für die Videos */
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+        }
 	/* Erstes Video (zentriert) */
         #video1 {
             width: 300px;
@@ -69,6 +102,7 @@
     <img src="geburtstagsbild-removebg-preview.png" alt="Geburtstagsbild"/>
 
     </div>
+    br
     <svg viewBox="0 0 800 300">
         <!-- Pfad für den geschwungenen Text, der eine Parabel formt -->
         <path id="curve" d="M0,200 Q400,50 800,200" fill="transparent" stroke="#ddd" stroke-width="1"/>
