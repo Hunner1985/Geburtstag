@@ -35,13 +35,24 @@
             stroke: red; /* Umrandung des Textes */
             stroke-width: 0.1vw; /* Proportionales Strokewidth */
         }
+	video_1 {
+            position: absolute; /* Ermöglicht die freie Positionierung */
+            top: 50px;  /* Abstand von der Oberkante */
+            right: 50px; /* Abstand von der rechten Seite */
+            width: 400px; /* Größe des Videos */
+            z-index: 0; /* Ebene: Das Video liegt hinter dem Bild und SVG */
+        }
     </style>
 </head>
 <body>
 
 	<!-- Bild wird im Raum positioniert -->
     <img src="geburtstagsbild-removebg-preview.png" alt="Geburtstagsbild"/>
-	
+
+    <video_1 controls>
+        <source src="dein-video.mp4" type="video/mp4">
+        Dein Browser unterstützt dieses Video nicht.
+    </video_1>
     <svg viewBox="0 0 800 300">
         <!-- Pfad für den geschwungenen Text, der eine Parabel formt -->
         <path id="curve" d="M0,200 Q400,50 800,200" fill="transparent" stroke="#ddd" stroke-width="1"/>
