@@ -8,12 +8,13 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: flex-start; /* Starten Sie die Inhalte oben im Fenster */
             align-items: center;
             height: 100vh;
             margin: 0;
-            background: radial-gradient(circle, #f7ec74, #ffffff); /* Radialer Farbverlauf: Hellgelb nach Weiß */
-            flex-direction: column; /* Elemente von oben nach unten anordnen */
+            background: radial-gradient(circle, #f7ec74, #ffffff); /* Radialer Farbverlauf */
+            overflow-y: auto; /* Ermöglicht das Scrollen, falls Inhalte zu groß für das Fenster sind */
         }
 
         /* Container für die Videos */
@@ -22,48 +23,55 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            margin-top: 20px; /* Abstand vom oberen Rand */
+            max-width: 100%; /* Verhindert, dass der Container über den Bildschirmrand hinausgeht */
+            flex-wrap: wrap; /* Videos umbrechen, wenn der Platz nicht ausreicht */
+            margin-top: 20px;
         }
 
-        /* Erstes Video (zentriert) */
-        #video1 {
-            width: 300px;
-            z-index: 2;
-        }
-
-        /* Zweites Video (leicht nach links versetzt) */
-        #video2 {
-            width: 300px;
-            margin-right: 50px; /* Leichte Verschiebung nach links */
-            z-index: 2;
-        }
-
-        /* Drittes Video (leicht nach rechts versetzt) */
-        #video3 {
-            width: 300px;
-            margin-left: 50px; /* Leichte Verschiebung nach rechts */
+        /* Video-Styling */
+        video {
+            width: 90%; /* Videos passen sich der Breite des Containers an */
+            max-width: 300px; /* Maximal 300px Breite für jedes Video */
+            margin: 10px;
             z-index: 2;
         }
 
         img {
-            margin-top: 20px; /* Abstand nach oben (zwischen Videos und Bild) */
+            margin-top: 20px;
             width: 30vw;
+            max-width: 300px; /* Beschränke die Breite auf kleineren Bildschirmen */
             z-index: 1;
         }
 
         svg {
             width: 85vw;
+            max-width: 800px; /* Begrenze die maximale Breite des SVGs */
             height: auto;
-            margin-top: 40px; /* Abstand zwischen dem Bild und dem SVG */
-            z-index: 1;
+            margin-top: 20px;
         }
 
         text {
-            font-size: 52px;
+            font-size: 4vw; /* Schriftgröße passt sich an die Bildschirmbreite an */
+            max-font-size: 52px; /* Maximalgröße für große Bildschirme */
             font-family: 'Comic Sans MS', sans-serif;
             fill: red;
             stroke: red;
             stroke-width: 0.1vw;
+        }
+
+        /* Kleinere Bildschirme (Smartphones) */
+        @media (max-width: 600px) {
+            text {
+                font-size: 5vw; /* Etwas größere Schrift für kleine Bildschirme */
+            }
+
+            video {
+                max-width: 250px; /* Reduziere die maximale Breite der Videos */
+            }
+
+            img {
+                width: 50vw; /* Bild passt sich kleineren Bildschirmen an */
+            }
         }
     </style>
 </head>
@@ -90,9 +98,10 @@
         </video>
     </div>
 
-    <!-- Bild wird unter den Videos angezeigt -->
+    <!-- Bild unter den Videos -->
     <img src="geburtstagsbild-removebg-preview.png" alt="Geburtstagsbild"/>
     
+    <!-- SVG für geschwungenen Text -->
     <svg viewBox="0 0 800 300">
         <path id="curve" d="M0,200 Q400,50 800,200" fill="transparent" stroke="#ddd" stroke-width="1"/>
 
