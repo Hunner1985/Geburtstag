@@ -12,50 +12,6 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-	    background: radial-gradient(circle, #f7ec74, #ffffff); /* Radialer Farbverlauf: Hellgelb (#fffacd) nach Weiß */
-        }
-	img {
-            position: absolute;
-            top: 10vh; /* Proportional zur Höhe des Viewports */
-            left: 35vw; /* Proportional zur Breite des Viewports */
-            width: 30vw; /* Die Breite passt sich proportional zur Fensterbreite an */
-            z-index: 0; /* Bild bleibt hinter dem Text */
-        }
-        svg {
-            width: 85vw; /* Passt die Breite des SVG proportional an das Fenster an */
-	    top: 54vh; /* Proportional zur Höhe des Viewports */
-            height: auto;
-            z-index: 1; /* SVG und Text über dem Bild */
-            position: absolute;
-        }
-        text {
-            font-size: 52px;
-            font-family: 'Comic Sans MS', sans-serif; /* Du kannst hier auch andere Fonts wählen */
-            fill: red; /* Farbe des Textes */
-            stroke: red; /* Umrandung des Textes */
-            stroke-width: 0.1vw; /* Proportionales Strokewidth */
-        }
-	Um die Videos zentriert und leicht nach links und rechts versetzt anzuordnen, können wir mit Flexbox arbeiten, um die Basiszentrierung zu steuern, und dann die einzelnen Videos mit margin anpassen, um sie leicht nach links oder rechts zu verschieben.
-
-Hier ist der angepasste Code, um deine Videos so zu positionieren:
-Code mit zentrierten und versetzten Videos:
-
-html
-
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alles Gute Nadja</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
             background: radial-gradient(circle, #f7ec74, #ffffff); /* Radialer Farbverlauf: Hellgelb nach Weiß */
             flex-direction: column;
         }
@@ -68,10 +24,11 @@ html
             position: relative;
             width: 100%;
         }
-	/* Erstes Video (zentriert) */
+
+        /* Erstes Video (zentriert) */
         #video1 {
-            width: 50%;
-            z-index: 1;
+            width: 300px;
+            z-index: 2;
         }
 
         /* Zweites Video (leicht nach links versetzt) */
@@ -87,33 +44,57 @@ html
             margin-left: 50px; /* Leichte Verschiebung nach rechts */
             z-index: 2;
         }
+
+        img {
+            position: absolute;
+            top: 10vh;
+            left: 35vw;
+            width: 30vw;
+            z-index: 0;
+        }
+
+        svg {
+            width: 85vw;
+            top: 54vh;
+            height: auto;
+            z-index: 1;
+            position: absolute;
+        }
+
+        text {
+            font-size: 52px;
+            font-family: 'Comic Sans MS', sans-serif;
+            fill: red;
+            stroke: red;
+            stroke-width: 0.1vw;
+        }
     </style>
 </head>
 <body>
-	
-<!-- Video-Container -->
-    <div class="video-container">
-        <!-- Erstes Video (zentral) -->
-        <video id="video1" autoplay loop>
-            <source src="videoplayback.mp4" type="video/mp4">
-            Dein Browser unterstützt dieses Video nicht.
-        </video>
-    <br>
-	<!-- Bild wird im Raum positioniert -->
+
+    <!-- Bild wird im Raum positioniert -->
     <img src="geburtstagsbild-removebg-preview.png" alt="Geburtstagsbild"/>
 
+    <!-- Video-Container -->
+    <div class="video-container">
+        <!-- Erstes Video (zentral) -->
+        <video id="video1" autoplay muted loop>
+            <source src="videoplayback1.mp4" type="video/mp4">
+            Dein Browser unterstützt dieses Video nicht.
+        </video>
+
+
     </div>
+
     <svg viewBox="0 0 800 300">
-        <!-- Pfad für den geschwungenen Text, der eine Parabel formt -->
         <path id="curve" d="M0,200 Q400,50 800,200" fill="transparent" stroke="#ddd" stroke-width="1"/>
 
         <!-- Der geschwungene Text entlang des Pfads -->
         <text>
-            <textPath href="#curve" startOffset="5%"> <!-- 25% verschiebt den Text so, dass die Mitte an der Spitze der Parabel ist -->
+            <textPath href="#curve" startOffset="5%">
                 Alles Gute zum Geburtstag! ;-)
             </textPath>
         </text>
-
     </svg>
 
 </body>
