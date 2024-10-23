@@ -37,15 +37,17 @@
 
         /* Erstes Video (zentriert) */
         #video1 {
+            position: absolute; /* Absolute Positionierung, damit es über den anderen schwebt */
+            top: 0; /* Positioniere es über den anderen Videos */
             width: 40vw;
-            z-index: 1;
+            z-index: 3;
         }
 
         /* Zweites Video (leicht nach links versetzt) */
         #video2 {
             width: 40vw;
             margin-right: 10vw; /* Leichte Verschiebung nach links */
-            z-index: 2;
+            z-index: 1;
         }
 
         /* Drittes Video (leicht nach rechts versetzt) */
