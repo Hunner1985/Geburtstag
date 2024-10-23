@@ -13,7 +13,7 @@
             height: 100vh;
             margin: 0;
             background: radial-gradient(circle, #f7ec74, #ffffff); /* Radialer Farbverlauf: Hellgelb nach Weiß */
-            flex-direction: column;
+            flex-direction: column; /* Elemente von oben nach unten anordnen */
         }
 
         /* Container für die Videos */
@@ -21,7 +21,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
             width: 100%;
             margin-top: 20px; /* Abstand vom oberen Rand */
         }
@@ -47,20 +46,16 @@
         }
 
         img {
-            position: absolute;
             margin-top: 20px; /* Abstand nach oben (zwischen Videos und Bild) */
-            top: 10vh;
-            left: 35vw;
             width: 30vw;
-            z-index: 0;
+            z-index: 1;
         }
 
         svg {
             width: 85vw;
-            top: 54vh;
             height: auto;
+            margin-top: 20px; /* Abstand zwischen dem Bild und dem SVG */
             z-index: 1;
-            position: absolute;
         }
 
         text {
@@ -95,7 +90,7 @@
         </video>
     </div>
 
-    <!-- Bild wird im Raum positioniert -->
+    <!-- Bild wird unter den Videos angezeigt -->
     <img src="geburtstagsbild-removebg-preview.png" alt="Geburtstagsbild"/>
     
     <svg viewBox="0 0 800 300">
