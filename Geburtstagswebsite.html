@@ -9,12 +9,11 @@
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             min-height: 100vh; /* Stellt sicher, dass die Höhe mindestens die des Viewports ist */
             margin: 0;
             background: radial-gradient(circle, #f7ec74, #ffffff); /* Radialer Farbverlauf */
-            overflow-y: auto; /* Ermöglicht Scrollen, falls nötig */
         }
 
         /* Container für die Videos */
@@ -22,48 +21,37 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap; /* Umbrüche erlauben, wenn der Platz nicht ausreicht */
-            width: 100%;
-            margin-top: 20px;
+            margin-bottom: 20px; /* Abstand zum Bild darunter */
+            position: relative;
         }
 
-        /* Video-Styling */
+        /* Styling für die Videos */
         video {
-            width: 90%; /* Passen sich flexibel der Breite an */
-            max-width: 300px;
-            margin: 10px;
-            z-index: 2;
+            width: 300px;
+            height: 200px;
         }
 
-        /* Erstes Video (zentriert) */
+        /* Styling für das zentrale Video */
         #video1 {
-            position: absolute; /* Absolute Positionierung, damit es über den anderen schwebt */
-            top: 0; /* Positioniere es über den anderen Videos */
-            width: 40vw;
-            z-index: 3;
+            position: relative;
+            top: -50px; /* Versetzt Video 1 leicht nach oben */
+            z-index: 2; /* Zieht Video 1 über die anderen */
         }
 
-        /* Zweites Video (leicht nach links versetzt) */
-        #video2 {
-            width: 40vw;
-            margin-right: 10vw; /* Leichte Verschiebung nach links */
-            z-index: 1;
+        /* Styling für die unteren Videos */
+        #video2, #video3 {
+            z-index: 1; /* Standard-Ebene für Video 2 und 3 */
+            margin: 0 20px; /* Platzierung links und rechts von Video 1 */
         }
 
-        /* Drittes Video (leicht nach rechts versetzt) */
-        #video3 {
-            width: 40vw;
-            margin-left: 10vw; /* Leichte Verschiebung nach rechts */
-            z-index: 2;
-        }
-
+        /* Bild unter den Videos */
         img {
             margin-top: 20px;
             width: 30vw;
             max-width: 300px; /* Begrenze die Breite des Bildes */
-            z-index: 1;
         }
 
+        /* SVG für den Text */
         svg {
             width: 85vw;
             max-width: 800px;
@@ -113,15 +101,15 @@
 
     <!-- Video-Container -->
     <div class="video-container">
-        <!-- Erstes Video (zentral) -->
-        <video id="video1" controls autoplay loop>
-            <source src="videoplayback.mp4" type="video/mp4">
-            Dein Browser unterstützt dieses Video nicht.
-        </video>
-
         <!-- Zweites Video (leicht nach links versetzt) -->
         <video id="video2" controls autoplay loop muted>
             <source src="Alles_Gute.mp4" type="video/mp4">
+            Dein Browser unterstützt dieses Video nicht.
+        </video>
+
+        <!-- Erstes Video (zentral, leicht nach oben versetzt) -->
+        <video id="video1" controls autoplay loop muted>
+            <source src="videoplayback.mp4" type="video/mp4">
             Dein Browser unterstützt dieses Video nicht.
         </video>
 
@@ -132,7 +120,7 @@
         </video>
     </div>
 
-    <!-- Bild unter den Videos -->
+    <!-- Bild wird unter den Videos positioniert -->
     <img src="geburtstagsbild-removebg-preview.png" alt="Geburtstagsbild"/>
     
     <!-- SVG für geschwungenen Text -->
