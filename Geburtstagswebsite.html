@@ -9,12 +9,12 @@
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Starten Sie die Inhalte oben im Fenster */
+            justify-content: flex-start;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh; /* Stellt sicher, dass die Höhe mindestens die des Viewports ist */
             margin: 0;
             background: radial-gradient(circle, #f7ec74, #ffffff); /* Radialer Farbverlauf */
-            overflow-y: auto; /* Ermöglicht das Scrollen, falls Inhalte zu groß für das Fenster sind */
+            overflow-y: auto; /* Ermöglicht Scrollen, falls nötig */
         }
 
         /* Container für die Videos */
@@ -22,16 +22,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap; /* Umbrüche erlauben, wenn der Platz nicht ausreicht */
             width: 100%;
-            max-width: 100%; /* Verhindert, dass der Container über den Bildschirmrand hinausgeht */
-            flex-wrap: wrap; /* Videos umbrechen, wenn der Platz nicht ausreicht */
             margin-top: 20px;
         }
 
         /* Video-Styling */
         video {
-            width: 90%; /* Videos passen sich der Breite des Containers an */
-            max-width: 300px; /* Maximal 300px Breite für jedes Video */
+            width: 90%; /* Passen sich flexibel der Breite an */
+            max-width: 300px;
             margin: 10px;
             z-index: 2;
         }
@@ -39,34 +38,47 @@
         img {
             margin-top: 20px;
             width: 30vw;
-            max-width: 300px; /* Beschränke die Breite auf kleineren Bildschirmen */
+            max-width: 300px; /* Begrenze die Breite des Bildes */
             z-index: 1;
         }
 
         svg {
             width: 85vw;
-            max-width: 800px; /* Begrenze die maximale Breite des SVGs */
+            max-width: 800px;
             height: auto;
             margin-top: 20px;
         }
 
         text {
             font-size: 4vw; /* Schriftgröße passt sich an die Bildschirmbreite an */
-            max-font-size: 52px; /* Maximalgröße für große Bildschirme */
+            max-font-size: 52px; /* Maximale Schriftgröße */
             font-family: 'Comic Sans MS', sans-serif;
             fill: red;
             stroke: red;
             stroke-width: 0.1vw;
         }
 
+        /* Mobile Querformat-Anpassungen */
+        @media (orientation: landscape) {
+            body {
+                justify-content: flex-start;
+            }
+            video {
+                width: 40%; /* Verkleinert die Videos im Querformat */
+            }
+            svg, img {
+                margin-top: 10px; /* Weniger Abstand, um mehr Platz im Querformat zu sparen */
+            }
+        }
+
         /* Kleinere Bildschirme (Smartphones) */
         @media (max-width: 600px) {
             text {
-                font-size: 5vw; /* Etwas größere Schrift für kleine Bildschirme */
+                font-size: 5vw; /* Größere Schrift für kleine Bildschirme */
             }
 
             video {
-                max-width: 250px; /* Reduziere die maximale Breite der Videos */
+                max-width: 250px; /* Kleinere Videos auf kleinen Bildschirmen */
             }
 
             img {
@@ -80,19 +92,19 @@
     <!-- Video-Container -->
     <div class="video-container">
         <!-- Erstes Video (zentral) -->
-        <video id="video1" controls autoplay loop>
+        <video id="video1" controls autoplay loop muted>
             <source src="videoplayback.mp4" type="video/mp4">
             Dein Browser unterstützt dieses Video nicht.
         </video>
 
         <!-- Zweites Video (leicht nach links versetzt) -->
-        <video id="video2" controls autoplay muted loop>
+        <video id="video2" controls autoplay loop muted>
             <source src="Alles_Gute.mp4" type="video/mp4">
             Dein Browser unterstützt dieses Video nicht.
         </video>
 
         <!-- Drittes Video (leicht nach rechts versetzt) -->
-        <video id="video3" controls autoplay muted loop>
+        <video id="video3" controls autoplay loop muted>
             <source src="Wise_guys.mp4" type="video/mp4">
             Dein Browser unterstützt dieses Video nicht.
         </video>
