@@ -13,31 +13,31 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background: radial-gradient(circle, #f7ec74, #ffffff);
+            background: radial-gradient(circle, #f7ec74, #ffffff); /* Hintergrund */
         }
 
         /* Container für die Videos */
         .video-container {
             display: flex;
             justify-content: center;
-            align-items: flex-end;
-            margin-bottom: 20px;
+            align-items: center;
             position: relative;
+            margin-bottom: 20px;
         }
 
         /* Erstes Video (zentral, leicht nach oben versetzt) */
         #video1 {
             width: 30vw;
-            height: 20vw;
+            height: auto;
             position: relative;
-            top: -50px; /* Hebt das Video nach oben */
+            top: -30px; /* Hebt das Video leicht nach oben */
             z-index: 2; /* Überlagert die anderen Videos */
         }
 
         /* Zweites und drittes Video, links und rechts versetzt */
         #video2, #video3 {
             width: 30vw;
-            height: 20vw;
+            height: auto;
             z-index: 1;
             margin: 0 20px;
         }
@@ -46,7 +46,7 @@
         img {
             margin-top: 20px;
             width: 30vw;
-            max-width: 300px;
+            height: auto;
         }
 
         /* SVG für den Text */
@@ -58,8 +58,7 @@
         }
 
         text {
-            font-size: 4vw;
-            max-font-size: 52px;
+            font-size: 3vw;
             font-family: 'Comic Sans MS', sans-serif;
             fill: red;
             stroke: red;
@@ -73,19 +72,20 @@
                 align-items: center;
             }
 
-            /* Videos im Hochformat stapeln und skalieren */
+            /* Videos im Hochformat stapeln und anpassen */
             #video1, #video2, #video3 {
-                width: 90vw;
+                width: 90vw; /* Breit genug für Hochformat */
                 height: auto;
-                margin: 10px 0; /* Abstand zwischen den Videos */
+                margin: 10px 0;
             }
 
             img {
-                width: 50vw; /* Größeres Bild für kleinere Bildschirme */
+                width: 50vw; /* Bildgröße für Hochformat */
+                height: auto;
             }
 
             text {
-                font-size: 6vw; /* Text vergrößern für kleine Bildschirme */
+                font-size: 6vw; /* Text vergrößern für Hochformat */
             }
         }
 
@@ -97,15 +97,22 @@
             }
 
             #video1 {
-                top: -50px; /* Nach oben versetzt in der Mitte */
+                width: 30vw; /* Zentrale Video-Größe für Querformat */
+                top: -30px;
             }
 
             #video2, #video3 {
-                margin: 0 20px;
+                width: 25vw; /* Größenanpassung für die beiden seitlichen Videos */
+                margin: 0 20px; /* Abstände zu Video_1 */
             }
 
-            svg, img {
-                margin-top: 10px;
+            img {
+                width: 30vw; /* Bild unter den Videos für Querformat */
+                height: auto;
+            }
+
+            text {
+                font-size: 4vw; /* Textgröße für Querformat */
             }
         }
     </style>
@@ -136,11 +143,11 @@
     <!-- Bild unter den Videos -->
     <img src="geburtstagsbild-removebg-preview.png" alt="Geburtstagsbild"/>
 
-    <!-- SVG für geschwungenen Text -->
+    <!-- Text mit SVG -->
     <svg viewBox="0 0 800 300">
         <path id="curve" d="M0,200 Q400,50 800,200" fill="transparent" stroke="#ddd" stroke-width="1"/>
 
-        <!-- Der geschwungene Text entlang des Pfads -->
+        <!-- Geschwungener Text -->
         <text>
             <textPath href="#curve" startOffset="5%">
                 Alles Gute zum Geburtstag! ;-)
