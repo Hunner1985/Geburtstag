@@ -11,44 +11,42 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Stellt sicher, dass die Höhe mindestens die des Viewports ist */
+            min-height: 100vh;
             margin: 0;
-            background: radial-gradient(circle, #f7ec74, #ffffff); /* Radialer Farbverlauf */
+            background: radial-gradient(circle, #f7ec74, #ffffff);
         }
 
         /* Container für die Videos */
         .video-container {
             display: flex;
             justify-content: center;
-            align-items: center;
-            margin-bottom: 20px; /* Abstand zum Bild darunter */
+            align-items: flex-end;
+            margin-bottom: 20px;
             position: relative;
         }
 
-        /* Styling für die Videos */
-        video {
+        /* Erstes Video (zentral, leicht nach oben versetzt) */
+        #video1 {
             width: 300px;
             height: 200px;
-        }
-
-        /* Styling für das zentrale Video */
-        #video1 {
             position: relative;
-            top: -50px; /* Versetzt Video 1 leicht nach oben */
-            z-index: 2; /* Zieht Video 1 über die anderen */
+            top: -50px; /* Hebt das Video nach oben */
+            z-index: 2; /* Überlagert die anderen Videos */
         }
 
-        /* Styling für die unteren Videos */
+        /* Zweites und drittes Video, links und rechts versetzt */
         #video2, #video3 {
-            z-index: 1; /* Standard-Ebene für Video 2 und 3 */
-            margin: 0 20px; /* Platzierung links und rechts von Video 1 */
+            width: 300px;
+            height: 200px;
+            z-index: 1;
+            margin: 0 20px;
         }
 
         /* Bild unter den Videos */
         img {
             margin-top: 20px;
             width: 30vw;
-            max-width: 300px; /* Begrenze die Breite des Bildes */
+            max-width: 300px;
         }
 
         /* SVG für den Text */
@@ -60,39 +58,54 @@
         }
 
         text {
-            font-size: 4vw; /* Schriftgröße passt sich an die Bildschirmbreite an */
-            max-font-size: 52px; /* Maximale Schriftgröße */
+            font-size: 4vw;
+            max-font-size: 52px;
             font-family: 'Comic Sans MS', sans-serif;
             fill: red;
             stroke: red;
             stroke-width: 0.1vw;
         }
 
-        /* Mobile Querformat-Anpassungen */
-        @media (orientation: landscape) {
-            body {
-                justify-content: flex-start;
-            }
-            video {
-                width: 40%; /* Verkleinert die Videos im Querformat */
-            }
-            svg, img {
-                margin-top: 10px; /* Weniger Abstand, um mehr Platz im Querformat zu sparen */
-            }
-        }
-
-        /* Kleinere Bildschirme (Smartphones) */
-        @media (max-width: 600px) {
-            text {
-                font-size: 5vw; /* Größere Schrift für kleine Bildschirme */
+        /* Mobile Anpassungen für Hochformat */
+        @media (max-width: 600px) and (orientation: portrait) {
+            .video-container {
+                flex-direction: column;
+                align-items: center;
             }
 
-            video {
-                max-width: 250px; /* Kleinere Videos auf kleinen Bildschirmen */
+            /* Videos im Hochformat stapeln und skalieren */
+            #video1, #video2, #video3 {
+                width: 90vw;
+                height: auto;
+                margin: 10px 0; /* Abstand zwischen den Videos */
             }
 
             img {
-                width: 50vw; /* Bild passt sich kleineren Bildschirmen an */
+                width: 50vw; /* Größeres Bild für kleinere Bildschirme */
+            }
+
+            text {
+                font-size: 6vw; /* Text vergrößern für kleine Bildschirme */
+            }
+        }
+
+        /* Querformat-Anpassungen */
+        @media (orientation: landscape) {
+            .video-container {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            #video1 {
+                top: -50px; /* Nach oben versetzt in der Mitte */
+            }
+
+            #video2, #video3 {
+                margin: 0 20px;
+            }
+
+            svg, img {
+                margin-top: 10px;
             }
         }
     </style>
@@ -101,28 +114,28 @@
 
     <!-- Video-Container -->
     <div class="video-container">
-        <!-- Zweites Video (leicht nach links versetzt) -->
+        <!-- Zweites Video (links) -->
         <video id="video2" controls autoplay loop muted>
             <source src="Alles_Gute.mp4" type="video/mp4">
             Dein Browser unterstützt dieses Video nicht.
         </video>
 
-        <!-- Erstes Video (zentral, leicht nach oben versetzt) -->
+        <!-- Erstes Video (zentral) -->
         <video id="video1" controls autoplay loop muted>
             <source src="videoplayback.mp4" type="video/mp4">
             Dein Browser unterstützt dieses Video nicht.
         </video>
 
-        <!-- Drittes Video (leicht nach rechts versetzt) -->
+        <!-- Drittes Video (rechts) -->
         <video id="video3" controls autoplay loop muted>
             <source src="Wise_guys.mp4" type="video/mp4">
             Dein Browser unterstützt dieses Video nicht.
         </video>
     </div>
 
-    <!-- Bild wird unter den Videos positioniert -->
+    <!-- Bild unter den Videos -->
     <img src="geburtstagsbild-removebg-preview.png" alt="Geburtstagsbild"/>
-    
+
     <!-- SVG für geschwungenen Text -->
     <svg viewBox="0 0 800 300">
         <path id="curve" d="M0,200 Q400,50 800,200" fill="transparent" stroke="#ddd" stroke-width="1"/>
