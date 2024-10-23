@@ -30,22 +30,6 @@
             min-height: 10vh;
         }
 
-        /* Erstes Video (zentral, leicht nach oben versetzt) */
-        #video1 {
-            width: 30vw;
-            height: auto;
-            position: relative;
-            top: -30px; /* Hebt das Video leicht nach oben */
-            z-index: 2; /* Überlagert die anderen Videos */
-        }
-
-        /* Zweites und drittes Video, links und rechts versetzt */
-        #video2, #video3 {
-            width: 30vw;
-            height: auto;
-            z-index: 1;
-            margin: 0 20px;
-        }
 
         /* Bild unter den Videos */
         img {
@@ -77,7 +61,7 @@
             }
             
             .video-container {
-                flex-direction: row;
+                flex-direction: column;
                 align-items: center;
             }
 
@@ -87,7 +71,23 @@
                 height: auto;
                 margin: 10px 0;
             }
+                    
+            /* Erstes Video (zentral, leicht nach oben versetzt) */
+            #video1 {
+                width: 30vw;
+                height: auto;
+                position: relative;
+                top: -30px; /* Hebt das Video leicht nach oben */
+                z-index: 2; /* Überlagert die anderen Videos */
+            }
 
+            /* Zweites und drittes Video, links und rechts versetzt */
+            #video2, #video3 {
+                width: 30vw;
+                height: auto;
+                z-index: 1;
+                margin: 0 20px;
+            }
             img {
                 width: 50vw; /* Bildgröße für Hochformat */
                 height: auto;
@@ -109,16 +109,22 @@
                 justify-content: center;
             }
 
+            /* Erstes Video (zentral, leicht nach oben versetzt) */
             #video1 {
-                width: 30vw; /* Zentrale Video-Größe für Querformat */
-                top: -30px;
+                width: 30vw;
+                height: auto;
+                position: relative;
+                top: -30px; /* Hebt das Video leicht nach oben */
+                z-index: 2; /* Überlagert die anderen Videos */
             }
-
+    
+            /* Zweites und drittes Video, links und rechts versetzt */
             #video2, #video3 {
-                width: 25vw; /* Größenanpassung für die beiden seitlichen Videos */
-                margin: 0 20px; /* Abstände zu Video_1 */
+                width: 30vw;
+                height: auto;
+                z-index: 1;
+                margin: 0 20px;
             }
-
             img {
                 width: 30vw; /* Bild unter den Videos für Querformat */
                 height: auto;
