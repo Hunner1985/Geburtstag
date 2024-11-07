@@ -16,20 +16,37 @@
             background: radial-gradient(circle, #e62222, #ffffff); /* Hintergrund */
         }
 
-        /* Container für die Videos */
-        .video-container {
+        /* Container für die Videos
+        .video-container1 {
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
             margin-bottom: 20px;
+            background:#00ff00;
         }
 
         .testcontainer {
             background: #110000;
             min-height: 10vh;
+        } */
+        .responsive-videocontainer {
+            position: relative;
+            padding-bottom: 56%; /* 16/9 Video */
+            padding-top: 30px;
+            height: 0;
+            overflow: hidden;
         }
 
+        .responsive-videocontainer iframe,  
+        .responsive-videocontainer object,  
+        .responsive-videocontainer embed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
         /* Bild unter den Videos */
         img {
@@ -60,34 +77,34 @@
                 background: #00ff00; /* Hintergrund */
             }
             
-            .video-container {
+            /* .video-container {
                 flex-direction: column;
                 align-items: center;
             }
 
-            /* Videos im Hochformat stapeln und anpassen */
+            /* Videos im Hochformat stapeln und anpassen 
             #video1, #video2, #video3 {
-                width: 90vw; /* Breit genug für Hochformat */
+                width: 90vw; /* Breit genug für Hochformat 
                 height: auto;
                 margin: 10px 0;
             }
                     
-            /* Erstes Video (zentral, leicht nach oben versetzt) */
+            /* Erstes Video (zentral, leicht nach oben versetzt) 
             #video1 {
                 width: 30vw;
                 height: auto;
                 position: relative;
-                top: -30px; /* Hebt das Video leicht nach oben */
-                z-index: 2; /* Überlagert die anderen Videos */
+                top: -30px; /* Hebt das Video leicht nach oben 
+                z-index: 2; /* Überlagert die anderen Videos 
             }
 
-            /* Zweites und drittes Video, links und rechts versetzt */
+            /* Zweites und drittes Video, links und rechts versetzt
             #video2, #video3 {
                 width: 30vw;
                 height: auto;
                 z-index: 1;
                 margin: 0 20px;
-            }
+            } */
             img {
                 width: 50vw; /* Bildgröße für Hochformat */
                 height: auto;
@@ -104,27 +121,27 @@
                 background: #2c13eb; /* Hintergrund */
             }
             
-            .video-container {
+            /*.video-container {
                 flex-direction: row;
                 justify-content: center;
             }
 
-            /* Erstes Video (zentral, leicht nach oben versetzt) */
+            /* Erstes Video (zentral, leicht nach oben versetzt) 
             #video1 {
                 width: 30vh;
                 height: auto;
                 position: relative;
-                top: -30px; /* Hebt das Video leicht nach oben */
-                z-index: 2; /* Überlagert die anderen Videos */
+                top: -30px; /* Hebt das Video leicht nach oben 
+                z-index: 2; /* Überlagert die anderen Videos 
             }
     
-            /* Zweites und drittes Video, links und rechts versetzt */
+            /* Zweites und drittes Video, links und rechts versetzt 
             #video2, #video3 {
                 width: 30vw;
                 height: auto;
                 z-index: 1;
                 margin: 0 20px;
-            }
+            }   */
             img {
                 width: 30vw; /* Bild unter den Videos für Querformat */
                 height: auto;
@@ -137,7 +154,9 @@
     </style>
 </head>
 <body>
-
+    <div class="responsive-video"container>
+        <p>Hallo</p>
+    </div>
     <!-- Video-Container -->
     <div class="video-container">
         <!-- Zweites Video (links) -->
