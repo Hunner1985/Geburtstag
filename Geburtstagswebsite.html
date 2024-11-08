@@ -155,21 +155,31 @@
 </head>
 <body>
     <div class="responsive-video"container>
+        <svg viewBox="0 0 800 300">
+            <path id="curve" d="M0,200 Q400,50 800,200" fill="transparent" stroke="#ddd" stroke-width="1"/>
+    
+            <!-- Geschwungener Text -->
+            <text>
+                <textPath href="#curve" startOffset="5%">
+                    Alles Gute zum Geburtstag! ;-)
+                </textPath>
+            </text>
+        </svg>
         <p>Hallo</p>
     </div>
     <!-- Video-Container 
-    <div class="video-container">
+    <div class="video-container"> -->
         <!-- Zweites Video (links) 
         <video id="video2" controls autoplay loop muted>
             <source src="Alles_Gute.mp4" type="video/mp4">
             Dein Browser unterstützt dieses Video nicht.
-        </video>
+        </video> -->
 
-        <!-- Erstes Video (zentral) 
+        <!-- Erstes Video (zentral)
         <video id="video1" controls autoplay loop muted>
             <source src="videoplayback.mp4" type="video/mp4">
             Dein Browser unterstützt dieses Video nicht.
-        </video>
+        </video> -->
 
         <!-- Drittes Video (rechts)
         <video id="video3" controls autoplay loop muted>
@@ -179,21 +189,12 @@
     </div> -->
 
     <!--<div class="testcontainer">
-    </div>
+    </div>-->
     <!-- Bild unter den Videos -->
     <img src="geburtstagsbild-removebg-preview.png" alt="Geburtstagsbild"/>
 
     <!-- Text mit SVG -->
-    <svg viewBox="0 0 800 300">
-        <path id="curve" d="M0,200 Q400,50 800,200" fill="transparent" stroke="#ddd" stroke-width="1"/>
 
-        <!-- Geschwungener Text -->
-        <text>
-            <textPath href="#curve" startOffset="5%">
-                Alles Gute zum Geburtstag! ;-)
-            </textPath>
-        </text>
-    </svg>
 
 </body>
 </html>
