@@ -3,52 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alles Gute Nadja</title>
+    <title>Grid Layout mit Bild und Video</title>
     <style>
-	/* Container für die Videos */
-        .video-container {
+        /* Grundlegendes Styling ohne feste Höhe, sodass die Seite bei Bedarf scrollbar wird */
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Grid-Container mit automatischer Höhe */
+        .grid-container {
+            display: grid;
+            grid-template-rows: auto auto; /* Zwei Zeilen mit automatischer Höhe */
+            width: 100vw; /* Volle Breite des Bildschirms */
+            height: auto; /* Höhe passt sich an den Inhalt an */
+        }
+
+        /* Zentriert Bild und Video innerhalb der jeweiligen Zeilen */
+        .grid-item {
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
-            margin-bottom: 20px;
-            background:#00ff00;
-        }
-        /* Mobile Anpassungen für Hochformat */
-        @media (orientation: portrait) {
-            body {
-            	max-width: 100vw;
-                background: #00ff00; /* Hintergrund grün*/
-            }
-            img {
-            	display: block;
-		margin: auto;
-                width: 80vw;
-                height: auto;
-            }
+            padding: 20px; /* Abstand zum Rand */
+            /*gap: 20px; /* Abstand zwischen den Videos */
+            position: relative; /* Ermöglicht absolute Positionierung innerhalb dieses Containers */
         }
 
-        /* Mobile Anpassungen für Querformat */
-        @media (orientation: landscape) {
-	    body {
-        	max-width: 100vh;
-		background: radial-gradient(circle, #e62222, #ffffff); /* Hintergrund */
-            }
-            img {
-            	display: block;
-		margin: auto;
-                width: 80vw;
-                height: auto;
-            }
+        img {
+            max-width: 100%;
+            height: auto; /* Passt die Höhe des Bildes/Videos an die Breite an */
+        }
+        
+		#video1 {
+            max-width: 40%; /* Größe des unteren Videos */
+            position: relative;
+            z-index: 2; /* Positioniert unter dem oberen Video */
+        }
+
+        #video2 {
+            max-width: 30%; /* Größe des oberen Videos */
+            position: absolute;
+            top: 80%; /* 2/3 von oben nach unten */
+            left: 77%; /* 2/3 von links nach rechts */
+            transform: translate(-50%, -50%); /* Zentriert das Video an der neuen Position */
+            z-index: 1; /* Positioniert über dem unteren Video */
+        }
+        
+        #video3 {
+            max-width: 40%; /* Größe des oberen Videos */
+            position: absolute;
+            top: 80%; /* 2/3 von oben nach unten */
+            left: 20%; /* 2/3 von links nach rechts */
+            transform: translate(-50%, -50%); /* Zentriert das Video an der neuen Position */
+            z-index: 1; /* Positioniert über dem unteren Video */
         }
     </style>
 </head>
 <body>
-
-    <!-- Geschwungener Text als Bild-->
-    <img src="gnomes-with-card.png" alt="Happy_Birthday"/>
-    <div class="video-container">
-    	<p> Hallo </p>
+    <div class="grid-container">
+        <!-- Bild in der ersten Zeile -->
+        <div class="grid-item">
+            <img src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/gnomes-with-card.png" alt="Bild von Gnome mit Karte">
+        </div>
+        
+        <!-- Video in der zweiten Zeile -->
+        <div class="grid-item">
+            <video id="video1" controls>
+                <source src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/videoplayback.mp4" type="video/mp4">
+                Ihr Browser unterstützt das Video-Tag nicht.
+            </video>
+            <video id="video2" controls>
+                <source src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/Wise_guys.mp4" type="video/mp4">
+                Ihr Browser unterstützt das Video-Tags nicht.
+            </video>
+            <video id="video3" controls>
+                <source src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/Alles_Gute.mp4" type="video/mp4">
+                Ihr Browser unterstützt das Video-Tags nicht.
+            </video>
+        </div>
     </div>
 </body>
 </html>
