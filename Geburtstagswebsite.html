@@ -3,13 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alles Gute zum GeburtstagNadja</title>
+    <title>Alles Gute zum Geburtstag Nadja</title>
     <style>
         /* Grundlegendes Styling ohne feste Höhe, sodass die Seite bei Bedarf scrollbar wird */
         body, html {
             margin: 0;
             padding: 0;
+            height: 100%; /* Stellen Sie sicher, dass der gesamte Körperbereich den Hintergrund einnimmt */
             background: radial-gradient(circle, #e62222, #ffffff); /* Hintergrund */
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Anfangs unsichtbarer Inhalt */
+        #content {
+            display: none; /* Versteckt den Hauptinhalt */
+            position: relative;
+        }
+
+        /* Der Button wird zentral positioniert */
+        #showContentButton {
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+			background: transparent; /* Hintergrund des Buttons durchsichtig */
+            border: 2px solid grey; /* Weißer Rand */
+            border-radius: 5px;
+            font-weight: bold;
         }
 
         /* Grid-Container mit automatischer Höhe */
@@ -26,7 +52,6 @@
             justify-content: center;
             align-items: center;
             padding: 20px; /* Abstand zum Rand */
-            /*gap: 20px; /* Abstand zwischen den Videos */
             position: relative; /* Ermöglicht absolute Positionierung innerhalb dieses Containers */
         }
 
@@ -35,7 +60,7 @@
             height: auto; /* Passt die Höhe des Bildes/Videos an die Breite an */
         }
         
-		#video1 {
+        #video1 {
             max-width: 50%; /* Größe des unteren Videos */
             position: relative;
             z-index: 2; /* Positioniert unter dem oberen Video */
@@ -61,27 +86,44 @@
     </style>
 </head>
 <body>
-    <div class="grid-container">
-        <!-- Bild in der ersten Zeile -->
-        <div class="grid-item">
-            <img src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/gnomes-with-card.png" alt="Bild von Gnome mit Karte">
-        </div>
-        
-        <!-- Video in der zweiten Zeile -->
-        <div class="grid-item">
-            <video id="video1" controls autoplay loop>
-                <source src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/videoplayback.mp4" type="video/mp4">
-                Ihr Browser unterstützt das Video-Tag nicht.
-            </video>
-            <video id="video2" controls autoplay loop muted>
-                <source src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/Wise_guys.mp4" type="video/mp4">
-                Ihr Browser unterstützt das Video-Tags nicht.
-            </video>
-            <video id="video3" controls autoplay loop muted>
-                <source src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/Alles_Gute.mp4" type="video/mp4">
-                Ihr Browser unterstützt das Video-Tags nicht.
-            </video>
+    <!-- Button zum Anzeigen des Inhalts -->
+    <button id="showContentButton">Click on me ;-)" </button>
+
+    <!-- Hauptinhalt wird hier versteckt -->
+    <div id="content">
+        <div class="grid-container">
+            <!-- Bild in der ersten Zeile -->
+            <div class="grid-item">
+                <img src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/gnomes-with-card.png" alt="Bild von Gnome mit Karte">
+            </div>
+            
+            <!-- Video in der zweiten Zeile -->
+            <div class="grid-item">
+                <video id="video1" controls autoplay loop muted>
+                    <source src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/videoplayback.mp4" type="video/mp4">
+                    Ihr Browser unterstützt das Video-Tag nicht.
+                </video>
+                <video id="video2" controls autoplay loop muted>
+                    <source src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/Wise_guys.mp4" type="video/mp4">
+                    Ihr Browser unterstützt das Video-Tag nicht.
+                </video>
+                <video id="video3" controls autoplay loop muted>
+                    <source src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/Alles_Gute.mp4" type="video/mp4">
+                    Ihr Browser unterstützt das Video-Tag nicht.
+                </video>
+            </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById("showContentButton").addEventListener("click", function() {
+            // Versteckt den Button und zeigt den Inhalt an
+            this.style.display = "none"; 
+            document.getElementById("content").style.display = "block";
+            var video = document.getElementById("video1");
+            video.muted = false; // Ton aktivieren
+            video.play(); // Video abspielen
+        });
+    </script>
 </body>
 </html>
