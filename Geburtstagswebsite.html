@@ -9,6 +9,7 @@
         body, html {
             margin: 0;
             padding: 0;
+            background: radial-gradient(circle, #e62222, #ffffff); /* Hintergrund */
         }
 
         /* Grid-Container mit automatischer Höhe */
@@ -35,7 +36,7 @@
         }
         
 		#video1 {
-            max-width: 40%; /* Größe des unteren Videos */
+            max-width: 50%; /* Größe des unteren Videos */
             position: relative;
             z-index: 2; /* Positioniert unter dem oberen Video */
         }
@@ -50,7 +51,7 @@
         }
         
         #video3 {
-            max-width: 40%; /* Größe des oberen Videos */
+            max-width: 35%; /* Größe des oberen Videos */
             position: absolute;
             top: 80%; /* 2/3 von oben nach unten */
             left: 20%; /* 2/3 von links nach rechts */
@@ -68,15 +69,15 @@
         
         <!-- Video in der zweiten Zeile -->
         <div class="grid-item">
-            <video id="video1" controls>
+            <video id="video1" controls autoplay loop>
                 <source src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/videoplayback.mp4" type="video/mp4">
                 Ihr Browser unterstützt das Video-Tag nicht.
             </video>
-            <video id="video2" controls>
+            <video id="video2" controls autoplay loop muted>
                 <source src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/Wise_guys.mp4" type="video/mp4">
                 Ihr Browser unterstützt das Video-Tags nicht.
             </video>
-            <video id="video3" controls>
+            <video id="video3" controls autoplay loop muted>
                 <source src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/Alles_Gute.mp4" type="video/mp4">
                 Ihr Browser unterstützt das Video-Tags nicht.
             </video>
