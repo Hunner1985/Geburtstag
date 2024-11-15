@@ -83,6 +83,14 @@
             transform: translate(-50%, -50%); /* Zentriert das Video an der neuen Position */
             z-index: 1; /* Positioniert über dem unteren Video */
         }
+	            
+        #video4 {
+            max-width: 35%; /* Größe des oberen Videos */
+            position: absolute;
+            top: 90%; /* 2/3 von oben nach unten */
+            transform: translate(-50%, -50%); /* Zentriert das Video an der neuen Position */
+            z-index: 1; /* Positioniert über dem unteren Video */
+        }
     </style>
 </head>
 <body>
@@ -104,11 +112,15 @@
                     Ihr Browser unterstützt das Video-Tag nicht.
                 </video>
                 <video id="video2" controls autoplay loop muted>
-                    <source src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/Wise_guys.mp4" type="video/mp4">
+                    <source src="video_2.mp4" type="video/mp4">
                     Ihr Browser unterstützt das Video-Tag nicht.
                 </video>
                 <video id="video3" controls autoplay loop muted>
-                    <source src="https://raw.githubusercontent.com/Hunner1985/Geburtstag/main/Alles_Gute.mp4" type="video/mp4">
+                    <source src="video_3.mp4" type="video/mp4">
+                    Ihr Browser unterstützt das Video-Tag nicht.
+                </video>
+                <video id="video4" controls autoplay loop muted>
+                    <source src="video_4.mp4" type="video/mp4">
                     Ihr Browser unterstützt das Video-Tag nicht.
                 </video>
             </div>
