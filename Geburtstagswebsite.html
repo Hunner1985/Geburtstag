@@ -144,26 +144,19 @@
             video.play(); // Video abspielen
         });
 
-	// Informationen über den Benutzer sammeln
-	const userInfo = {
-	    browser: navigator.userAgent,
-	    language: navigator.language,
-	    referrer: document.referrer,
-	    page: window.location.href,
-	};
+    // Sendet eine Anfrage an das externe PHP-Skript
+    fetch('https://hunner.111mb.de//send_email.php'', { // URL zu Ihrem PHP-Skript
+        method: 'POST',
+    }).then(response => {
+        if (response.ok) {
+            console.log('E-Mail erfolgreich gesendet');
+        } else {
+            console.error('Fehler beim Senden der E-Mail');
+        }
+    }).catch(error => {
+        console.error('Netzwerkfehler:', error);
+    });
 	
-	// Daten an den PHP-Server senden
-	fetch('https://hunner.111mb.de//send_email.php', {
-	    method: 'POST',
-	    headers: {
-	        'Content-Type': 'application/json',
-	    },
-	    body: JSON.stringify(userInfo),
-	})
-	.then(response => response.text())
-	.then(data => console.log('Serverantwort:', data))
-	.catch(error => console.error('Fehler beim Senden:', error));
-
     </script>
 </body>
 </html>
