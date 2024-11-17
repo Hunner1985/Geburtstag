@@ -77,23 +77,17 @@
             #video1, #video2, #video3, #video4 {
                 max-width: 90%; /* Verkleinere Videos auf kleinen Geräten */
             }
-        }          
+        }
     </style>
 </head>
 <body>
-    <!-- Container für Button und Inhalt -->
     <div id="container">
-        <!-- Button zum Anzeigen des Inhalts -->
-        <button id="showContentButton">Click on me ;-)_</button>
-        <!-- Hauptinhalt -->
+        <button id="showContentButton">Click on me ;-)</button>
         <div id="content">
             <div class="grid-container">
-                <!-- Bild in der ersten Zeile -->
                 <div class="grid-item">
                     <img src="gnomes-with-card.png" alt="Bild von Gnome mit Karte">
                 </div>
-                
-                <!-- Videos in der zweiten Zeile -->
                 <div class="grid-item">
                     <video id="video1" controls autoplay loop muted>
                         <source src="video_1.mp4" type="video/mp4">
@@ -118,27 +112,30 @@
 
     <script>
         document.getElementById("showContentButton").addEventListener("click", function() {
-            // Versteckt den Button und zeigt den Inhalt an
-            this.style.display = "none"; 
+            this.style.display = "none";
             document.getElementById("content").style.display = "block";
             var video = document.getElementById("video1");
-            video.muted = false; // Ton aktivieren
-            video.play(); // Video abspielen
+            video.muted = false;
+            video.play();
         });
 
-    // Sendet eine Anfrage an das externe PHP-Skript
-    fetch('https://hunner.111mb.de//send_email.php'', { // URL zu Ihrem PHP-Skript
-        method: 'POST',
-    }).then(response => {
-        if (response.ok) {
-            console.log('E-Mail erfolgreich gesendet');
-        } else {
-            console.error('Fehler beim Senden der E-Mail');
-        }
-    }).catch(error => {
-        console.error('Netzwerkfehler:', error);
-    });
-	
+        const userInfo = {
+            browser: navigator.userAgent,
+            language: navigator.language,
+            referrer: document.referrer,
+            page: window.location.href,
+        };
+
+        fetch('https://hunner.111mb.de/send_email.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userInfo),
+        })
+        .then(response => response.text())
+        .then(data => console.log('Serverantwort:', data))
+        .catch(error => console.error('Fehler beim Senden:', error));
     </script>
 </body>
-</html>
+</html
