@@ -5,21 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alles Gute zum Geburtstag Nadja</title>
     <style>
-        /* Grundlegendes Styling ohne feste Höhe, sodass die Seite bei Bedarf scrollbar wird */https://github.com/Hunner1985/Geburtstag/edit/main/Geburtstagswebsite.html
+        /* Grundlegendes Styling */
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%; /* Stellen Sie sicher, dass der gesamte Körperbereich den Hintergrund einnimmt */
+            height: 100%;
             background: radial-gradient(circle, #e62222, #ffffff); /* Hintergrund */
             font-family: Arial, sans-serif;
+        }
+
+        /* Container für Zentrierung */
+        #container {
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100%;
         }
 
         /* Anfangs unsichtbarer Inhalt */
         #content {
             display: none; /* Versteckt den Hauptinhalt */
+            width: 100%; /* Volle Breite nutzen */
+            height: auto; /* Höhe dynamisch anpassen */
+            overflow: auto; /* Scrollen erlauben, falls nötig */
             position: relative;
         }
 
@@ -28,12 +36,8 @@
             font-size: 18px;
             padding: 10px 20px;
             cursor: pointer;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-			background: transparent; /* Hintergrund des Buttons durchsichtig */
-            border: 2px solid grey; /* Weißer Rand */
+            background: transparent; /* Hintergrund des Buttons durchsichtig */
+            border: 2px solid grey; /* Grauer Rand */
             border-radius: 5px;
             font-weight: bold;
         }
@@ -84,60 +88,33 @@
             z-index: 1; /* Positioniert über dem unteren Video */
         }
 	    
-	#video4 {
+        #video4 {
             max-width: 50%; /* Größe des oberen Videos */
             position: absolute;
-            top: 130%; /* mehr als 2/3 von oben nach unten */
-	    left: 50%; /* mittig */
+            top: 130%; /* Mehr als 2/3 von oben nach unten */
+            left: 50%; /* Mittig */
             transform: translate(-50%, -50%); /* Zentriert das Video an der neuen Position */
             z-index: 2; /* Positioniert über dem unteren Video */
         }            
-
     </style>
 </head>
 <body>
-    <!-- Button zum Anzeigen des Inhalts -->
-    <button id="showContentButton">.Click on me ;-)</button>
-
-    <!-- Hauptinhalt wird hier versteckt -->
-    <div id="content">
-        <div class="grid-container">
-            <!-- Bild in der ersten Zeile -->
-            <div class="grid-item">
-                <img src="gnomes-with-card.png" alt="Bild von Gnome mit Karte">
-            </div>
-            
-            <!-- Video in der zweiten Zeile -->
-            <div class="grid-item">
-                <video id="video1" controls autoplay loop muted>
-                    <source src="video_1.mp4" type="video/mp4">
-                    Ihr Browser unterstützt das Video-Tag nicht.
-                </video>
-                <video id="video2" controls autoplay loop muted>
-                    <source src="video_2.mp4" type="video/mp4">
-                    Ihr Browser unterstützt das Video-Tag nicht.
-                </video>
-                <video id="video3" controls autoplay loop muted>
-                    <source src="video_3.mp4" type="video/mp4">
-                    Ihr Browser unterstützt das Video-Tag nicht.
-                </video>
-                <video id="video4" controls autoplay loop muted>
-                    <source src="video_4.mp4" type="video/mp4">
-                    Ihr Browser unterstützt das Video-Tag nicht.
-                </video>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.getElementById("showContentButton").addEventListener("click", function() {
-            // Versteckt den Button und zeigt den Inhalt an
-            this.style.display = "none"; 
-            document.getElementById("content").style.display = "block";
-            var video = document.getElementById("video1");
-            video.muted = false; // Ton aktivieren
-            video.play(); // Video abspielen
-        });
-    </script>
-</body>
-</html>
+    <!-- Container für Button und Inhalt -->
+    <div id="container">
+        <!-- Button zum Anzeigen des Inhalts -->
+        <button id="showContentButton">Click on me ;-)</button>
+        <!-- Hauptinhalt -->
+        <div id="content">
+            <div class="grid-container">
+                <!-- Bild in der ersten Zeile -->
+                <div class="grid-item">
+                    <img src="gnomes-with-card.png" alt="Bild von Gnome mit Karte">
+                </div>
+                
+                <!-- Videos in der zweiten Zeile -->
+                <div class="grid-item">
+                    <video id="video1" controls autoplay loop muted>
+                        <source src="video_1.mp4" type="video/mp4">
+                        Ihr Browser unterstützt das Video-Tag nicht.
+                    </video>
+                    <vid
