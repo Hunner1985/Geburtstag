@@ -17,21 +17,21 @@
         }
 
         /* Container für Zentrierung */
-        #container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-
-        /* Anfangs unsichtbarer Inhalt */
-        #content {
-            display: none; /* Versteckt den Hauptinhalt */
-            width: 100%; /* Volle Breite nutzen */
-            height: auto; /* Höhe dynamisch anpassen */
-            overflow: auto; /* Scrollen erlauben, falls nötig */
-            position: relative;
-        }
+	#container {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    height: 100vh; /* Sicherstellt, dass der Container 100% der Viewport-Höhe einnimmt */
+	}
+	
+	/* Anfangs unsichtbarer Inhalt */
+	#content {
+	    display: none; /* Versteckt den Hauptinhalt */
+	    width: 100%; /* Volle Breite nutzen */
+	    height: 100%; /* Passt sich an die volle Höhe an */
+	    overflow: hidden; /* Kein Scrollen innerhalb des Inhalts */
+	    position: relative;
+	}
 
         /* Der Button wird zentral positioniert */
         #showContentButton {
