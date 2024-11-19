@@ -6,30 +6,29 @@
     <title>Alles Gute zum Geburtstag Nadja</title>
     <style>
         /* Grundlegendes Styling */
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            background: radial-gradient(circle, #e62222, #ffffff); /* Hintergrund */
-            font-family: Arial, sans-serif;
-            overflow-x: hidden; /* Verhindert horizontales Scrollen */
-	    overflow-y: auto; /* Aktiviert vertikales Scrollen */
-        }
-
-        /* Container für Zentrierung */
+	body, html {
+	    margin: 0;
+	    padding: 0;
+	    height: 100vh; /* 100% der Viewport-Höhe */
+	    overflow: hidden; /* Verhindert Scrollen im Hochformat */
+	    background: radial-gradient(circle, #e62222, #ffffff); /* Hintergrund */
+	    font-family: Arial, sans-serif;
+	}
+	
+	/* Container für Zentrierung */
 	#container {
 	    display: flex;
 	    justify-content: center;
 	    align-items: center;
-	    height: 100vh; /* Sicherstellt, dass der Container 100% der Viewport-Höhe einnimmt */
+	    height: 100vh; /* Standardhöhe für Hochformat */
 	}
 	
-	/* Anfangs unsichtbarer Inhalt */
+	/* Hauptinhalt */
 	#content {
 	    display: none; /* Versteckt den Hauptinhalt */
-	    width: 100%; /* Volle Breite nutzen */
-	    height: 100vh; /* Passt sich an die volle Höhe an */
-	    overflow: hidden; /* Kein Scrollen innerhalb des Inhalts */
+	    width: 100%;
+	    height: 100%;
+	    overflow: hidden; /* Standardmäßig kein Scrollen */
 	    position: relative;
 	}
 
@@ -97,14 +96,35 @@
             left: 50%; /* Mittig */
             transform: translate(-50%, -50%); /* Zentriert das Video an der neuen Position */
             z-index: 1; /* Positioniert über dem unteren Video */
-        }            
+        }    
+	    /* Media Query für Querformat */
+	@media (orientation: landscape) {
+	    body, html {
+	        height: auto; /* Erlaubt dynamische Höhe */
+	        overflow-y: auto; /* Aktiviert vertikales Scrollen */
+	    }
+	
+	    #container {
+	        height: auto; /* Passt sich dem Inhalt an */
+	        align-items: flex-start; /* Verhindert vertikales Zentrieren */
+	    }
+	
+	    #content {
+	        overflow-y: auto; /* Aktiviert Scrollen im Hauptinhalt */
+	    }
+	
+	    #video4 {
+	        position: static; /* Löst absolute Positionierung auf */
+	        margin: 20px auto; /* Zentriert das Video im Querformat */
+	    }
+	}
     </style>
 </head>
 <body>
     <!-- Container für Button und Inhalt -->
     <div id="container">
         <!-- Button zum Anzeigen des Inhalts -->
-        <button id="showContentButton">Click on me ;-)-</button>
+        <button id="showContentButton">Click on me ;-)</button>
         <!-- Hauptinhalt -->
         <div id="content">
             <div class="grid-container">
