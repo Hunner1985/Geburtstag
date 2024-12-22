@@ -1,0 +1,283 @@
+<html>
+    <head>
+        <title>Happy Birthday</title>
+        <link rel="shortcut icon" type="image/x-icon" href="Happy-Birthday-Cake.ico">
+        <style>
+            html, body{
+                background-color: #F4CBAA;
+                vertical-align:middle;
+            }
+            table#style_80{
+                width: 80%;
+                height: 100px;
+                background-color: #0043AC;
+                border-width: 4px;
+                border-style: solid;
+                border-color:#e2b007;
+                border-radius: 3em 3em 3em;
+                border-spacing: 0;
+                text-align: center;
+                font-size: 40px;
+            }
+
+            td#style {
+                border-width: 2px;
+                border-style: solid;
+                border-color:#b58d06;
+                border-radius: 2em 2em 2em;
+                border-spacing: 0;
+                text-align: center;
+                font-size: 50px;
+                vertical-align:middle;
+            }
+            button{
+                width: 100%;
+                background-color: #0043AC;
+                border-width: 4px;
+                border-style: solid;
+                border-color:#e2b007;
+                border-radius: 3em 3em 3em;
+                border-spacing: 0;
+                text-align: center;
+                font-size: 50px;
+            }
+            .buttonhover:hover {
+                background-color: #e2b007;
+                border-color:#C5B358;
+            }
+            table#style_kreis{
+                margin-left: auto;
+                margin-right: auto;
+                width: 100px;
+                height: 100px;
+                background-color: #0043AC;
+                border-width: 4px;
+                border-style: solid;
+                border-color:#e2b007;
+                border-radius: 50px;
+                border-spacing: 0;
+                text-align: center;
+                font-size: 58px;
+            }
+            dialog {
+                display: none;
+                position: relative;
+                background: white;
+                border: 1px solid grey;
+                border-radius: 0 .5em .5em;
+                z-index: 1002;
+                padding: .5em 1em;
+                width: 100%;
+                height: auto;
+                text-align: center;
+            }
+            
+            dialog[open="open"] {
+                display: block;
+            }
+            
+            @media (min-width: 30em) {
+                dialog {
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -10em;
+                    left: 50%;
+                    margin-left: -10em;
+                    width: 20em;
+                }
+            }
+            
+            dialog::backdrop,
+                #backdrop {
+                /* Ebene zwischen Hintergrund und Dialog-Box, Pseudoelement noch nicht implementiert */
+            
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: rgba(0, 0, 0, 0.5);
+                }
+            
+            dialog #close-dialog {
+                width: 50%;
+                height: 2em;
+                cursor: pointer;
+                color: white;
+                font-weight: bold;
+                font-size: 1.5em;
+                border-radius: .5em .5em .5em;
+            }
+
+        </style>
+        <script type="text/javascript">
+            endtime = 10;
+            time = 0;
+            task = 0;
+            tasklength = 0;
+            alertText1 = "sehr gut \n Weiter";
+            alertText2 = "        zu spät :-( \n Nochmal von vorne";
+            alertText3 = "falsche Antwort  :-( \n Nochmal von vorne";
+            wait_timer_var = 0;
+            makenew = 0;
+            antw = 0;
+             //Frage, vier Antworten, Lösung 1 - 4 als Zahl, Zeit in sekunden
+            var Raetsel = new Array('Wann wurde das "alte" Schulhaus erbaut?', '1940', '1860', '1890', '1960', 2, 10,
+                                    'Wann wurde zum ersten Mal ein T-Shirt mit aufgedrucktem Motiv zu Werbezwecken verwendet?', '1098', '200 v.Chr.', '1939', '1860', 3, 10,
+                                    'Welche Farbe hat der Himmel?', 'braun', 'blau', 'rot', 'gr&uuml;n', 2, 6,
+                                    'Eine Zahl zwischen 2 und 4', '?', '?', '?', '_5_', 3, 2,
+                                    'Was ergibt 26?', '400-260-100', '22+3', '260 : 100', '(26^26-624):2', 4, 10);
+            document.addEventListener('DOMContentLoaded', function(event) {
+                tasklength = Raetsel.length;
+                aufgabe();
+                // Funktion einmal pro Sekunde ausführen
+                window.setInterval(function() {
+                // Solange der Timer nicht angehalten wird
+                    if(wait_timer_var == 0){
+                        time = time + 1;
+                        document.getElementById("showTime").innerHTML = endtime - time;
+                        if (time > endtime - 1){
+                            time = 0;
+                            makenew = 1;    // zu spät
+                            auswertung()
+                        }
+                    }
+                },1000);
+            });
+        
+            function aufgabe(){
+                document.getElementById("question").innerHTML = Raetsel[task];
+                document.getElementById("antw1").innerHTML = Raetsel[task +1];
+                document.getElementById("antw2").innerHTML = Raetsel[task +2];
+                document.getElementById("antw3").innerHTML = Raetsel[task +3];
+                document.getElementById("antw4").innerHTML = Raetsel[task +4];
+                endtime = Raetsel[task +6];
+            }
+        
+            function toggleDialog() {
+                var dialog = document.querySelector('dialog'),
+                closeButton = document.getElementById('close-dialog');
+                if (!dialog.hasAttribute('open')) {
+                    // show the dialog
+                    dialog.setAttribute('open', 'open');
+                    // after displaying the dialog, focus the closeButton inside it
+                    closeButton.focus();
+                    closeButton.addEventListener('click', toggleDialog);
+                    // only hide the background *after* you've moved focus out of the content that will be "hidden"
+                    var div = document.createElement('div');
+                    div.id = 'backdrop';
+                    document.body.appendChild(div);
+                } else {
+                // beim schließen der DialogBox den Timer zurücksetzten und wieder starten
+                    time = 0;
+                    wait_timer_var = 0;
+                    if (makenew == 0){
+                        aufgabe();
+                        dialog.removeAttribute('open');
+                        var div = document.querySelector('#backdrop');
+                        div.parentNode.removeChild(div);
+                    } else{
+                        location.reload(true);
+                    }
+                }
+            }
+            function antw_1() {
+                antw = 1;
+                auswertung()
+            }
+            function antw_2() {
+                antw = 2;
+                auswertung()
+            }
+            function antw_3() {
+                antw = 3;
+                auswertung()
+            }
+            function antw_4() {
+                antw = 4;
+                auswertung()
+            }
+        
+            function auswertung(){
+            // Timer anhalten
+                wait_timer_var = 1;
+                if (makenew == 0){
+                    // Die Zeit wurde nicht überschritten
+                    if(antw == Raetsel[task +5]){
+                        // Die Antwort ist richtig nächste Frage solange task kleiner ist
+                        //als Fragen in der Liste sind task um 7 erhöhen (beginn der nächsten Aufgabe
+                        //und Ausgabe dieser)
+                        if (task < tasklength - 8){
+                            Text = alertText1;
+                            task = task + 7;
+                        } else {
+                            // Falls keineFragen mehr da sind, weiterleiten
+                            window.location = "https://hunner.111mb.de/Geburtstag/geschafft.php";
+                        }
+                    } else {
+                        // Die Antwort ist falsch; Von vorne beginnen
+                        Text = alertText3;
+                        makenew = 1;
+                    }
+                } else {
+                    // Die Zeit wurde  überschritten; Von vorne beginnen
+                    Text = alertText2;
+                    makenew = 1;
+                }
+            // Text in Dialogbox schreiben Dialogbox öffnen
+                document.getElementById("Ausgabetext").innerHTML = Text;
+                toggleDialog();
+            }
+        </script>
+    </head>
+    <body>
+        <table style=" margin: 100px auto; " id="style_80">
+            <tr>
+                <td>
+                    <b> <span id="question"></span></b>
+                </td>
+            </tr>
+        </table>    
+        <table width=80%  style=" margin: 140px auto; ">
+            <tr height=83px>
+                <td>
+                    <button id="antw1" class="button buttonhover" onclick="antw_1()">Antwort</button>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <button id="antw2" class="button buttonhover" onclick="antw_2()">Antwort</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td style="width: 20%;vertical-align:middle;" >
+                    <table id="style_kreis">
+                        <tr>
+                            <td>
+                                <b> <span id="showTime"></span></b>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr style="hight: 83px;">
+                <td>
+                    <button id="antw3" class="button buttonhover" onclick="antw_3()">Antwort</button>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <button id="antw4" class="button buttonhover" onclick="antw_4()">Antwort</button>
+                </td>
+            </tr>
+        </table>
+        <dialog role="dialog">
+            <h2><span id="Ausgabetext">Text</span></h2>
+            <button id="close-dialog">Weiter</button>
+        </dialog>
+    </body>
+</html>
