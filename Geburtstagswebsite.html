@@ -7,7 +7,7 @@
                 background: radial-gradient(circle, #FFB809, #FFFF43); /* Hintergrund */
                 vertical-align:middle;
             }
-            table#style_80{
+                        table#style_80{
                 width: 80%;
                 height: 100px;
                 background-color: #0043AC;
@@ -127,7 +127,6 @@
                                     'Welche Farbe hat der Himmel?', 'braun', 'blau', 'rot', 'gr&uuml;n', 2, 6,
                                     'Eine Zahl zwischen 2 und 4', '?', '?', '?', '_5_', 3, 2,
                                     'Was ergibt 26?', '400-260-100', '22+3', '260 : 100', '(26^26-624):2', 4, 10);
-                                      
             document.addEventListener('DOMContentLoaded', function(event) {
                 tasklength = Raetsel.length;
                 aufgabe();
@@ -212,30 +211,8 @@
                             Text = alertText1;
                             task = task + 7;
                         } else {
-                            // Falls keine Fragen mehr da sind, Datum abfragen
-                            var jetzt = new Date();
-                            var Jahre = jetzt.getFullYear();
-                            var Monate = jetzt.getMonth();
-                            var Tage = jetzt.getDate();
-                            
-                            //ACHUTNG DER GIBT MONATE VON 0 bis 11 aus!
-                            //Deswegen:
-                            Monate = Monate + 1;
-                            
-                            //Zeitpunkte festlegen
-                            var heute = Tage + "." + Monate + "." + Jahre;
-                            var geburtstag = "07.02.2025";
-                            
-                            // If Abfrage
-                            if (heute == geburtstag)
-                            {
-                                // Wenn der Geburtstag ist / war, dann weiterleiten
-                                 window.location = "https://github.com/Hunner1985/Geburtstag/Geburtstagswebsite_2.html";
-                            }   
-                            else
-                            {
-                                 document.write("Heute ist der " + heute + " versuche es doch am " + geburtstag + nochmal ;-));
-                            }                          
+                            // Falls keineFragen mehr da sind, weiterleiten
+                            window.location = "https://hunner.111mb.de/Geburtstag/geschafft.php";
                         }
                     } else {
                         // Die Antwort ist falsch; Von vorne beginnen
@@ -251,7 +228,6 @@
                 document.getElementById("Ausgabetext").innerHTML = Text;
                 toggleDialog();
             }
-
         </script>
     </head>
     <body>
