@@ -214,7 +214,9 @@
             function auswertung(){
             // Timer anhalten
                 wait_timer_var = 1;
-                geburtstag = '07.02.2024';
+                const jetzt = new Date();
+                const geburtstag = new Date('2024-02-07');
+
                 
                 if (makenew == 0){
                     // Die Zeit wurde nicht überschritten
@@ -226,14 +228,13 @@
                             Text = alertText1;
                             task = task + 7;
                         } else {
-                            // Falls keineFragen mehr da sind, schauen obder Geburtstag schon war. dann weiterleiten
-                            $jetzt = new DateTime(); // DateTime-Objekt erstellen
-                            $heute = $jetzt->format('d.m.Y'); // Formatieren
-                            if ($heute < geburtstag){
-                                echo 'Ihr seid zu früh...Versucht es doch ab dem' + geburtstag + 'nochmal ;-)';
+                            // Falls keine Fragen mehr da sind, schauen ob der Geburtstag schon war. Wenn ja, dann weiterleiten.
+                            if (jetzt < geburtstag) {
+                                alert('Ihr seid zu früh... Versucht es doch ab dem ' + geburtstag.toLocaleDateString('de-DE') + ' nochmal ;-)');
                             } else {
                                 // Weiterleitung
                                 window.location = "https://Hunner1985.github.io/Geburtstag/Geburtstagswebsite_2.html";
+                            }
                         }
                     } else {
                         // Die Antwort ist falsch; Von vorne beginnen
