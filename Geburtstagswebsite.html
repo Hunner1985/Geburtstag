@@ -7,7 +7,7 @@
                 background: radial-gradient(circle, #FFB809, #FFFF43); /* Hintergrund */
                 vertical-align:middle;
             }
-                        table#style_80{
+            table#style_80{
                 width: 80%;
                 height: 100px;
                 background-color: #0043AC;
@@ -19,7 +19,6 @@
                 text-align: center;
                 font-size: 40px;
             }
-
             td#style {
                 border-width: 2px;
                 border-style: solid;
@@ -215,7 +214,7 @@
             // Timer anhalten
                 wait_timer_var = 1;
             // Geburtstag definieren
-            const geburtstag = new Date('2024-02-07'); // Jahr-Monat-Tag
+            const geburtstag = new Date('2025-02-07'); // Jahr-Monat-Tag
             // Aktuelles Datum
             const heute = new Date();
                 
@@ -230,7 +229,7 @@
                             task = task + 7;
                         } else {
                             // Falls keine Fragen mehr da sind, schauen ob der Geburtstag schon war. Wenn ja, dann weiterleiten.
-                            alert( heute.getDate() + ' ' + geburtstag.getDate())
+                            alert( heute + ' | ' + geburtstag)
                             if (heute < geburtstag) {
                                 alert('Ihr seid zu früh... Versucht es doch ab dem ' + geburtstag.toLocaleDateString('de-DE') + ' nochmal ;-)');
                             } else {
