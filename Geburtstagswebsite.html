@@ -231,12 +231,12 @@
                             // Falls keine Fragen mehr da sind, schauen ob der Geburtstag schon war. Wenn ja, dann weiterleiten.
                             if (heute < geburtstag) {
                                 alert('Ihr seid zu früh... Versucht es doch ab dem ' + geburtstag.toLocaleDateString('de-DE') + ' nochmal ;-)');
+                                return;    //Skript beenden
                             } else {
                                 // Weiterleitung
-                                alert('weiterleitung ' + geburtstag.toLocaleDateString('de-DE') + ' nochmal ;-)');
                                 window.location = "https://Hunner1985.github.io/Geburtstag/Geburtstagswebsite_2.html";
+                                return;    //Skript beenden
                             }
-                            return;    //Skript beenden
                         }
                     } else {
                         // Die Antwort ist falsch; Von vorne beginnen
