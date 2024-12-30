@@ -183,7 +183,7 @@
                 } else {
                 // beim schließen der DialogBox den Timer zurücksetzten und wieder starten
                     time = 0;
-                    wait_timer_var = 0;
+                     = 0;
                     if (makenew == 0){
                         aufgabe();
                         dialog.removeAttribute('open');
@@ -214,6 +214,8 @@
             function auswertung(){
             // Timer anhalten
                 wait_timer_var = 1;
+                geburtstag = '07.02.2024';
+                
                 if (makenew == 0){
                     // Die Zeit wurde nicht überschritten
                     if(antw == Raetsel[task +5]){
@@ -224,8 +226,14 @@
                             Text = alertText1;
                             task = task + 7;
                         } else {
-                            // Falls keineFragen mehr da sind, weiterleiten
-                            window.location = "https://Hunner1985.github.io/Geburtstag/Geburtstagswebsite_2.html";
+                            // Falls keineFragen mehr da sind, schauen obder Geburtstag schon war. dann weiterleiten
+                            $jetzt = new DateTime(); // DateTime-Objekt erstellen
+                            $heute = $jetzt->format('d.m.Y'); // Formatieren
+                            if ($heute < geburtstag){
+                                echo 'Ihr seid zu früh...Versucht es doch ab dem' + geburtstag + 'nochmal ;-)';
+                            } else {
+                                // Weiterleitung
+                                window.location = "https://Hunner1985.github.io/Geburtstag/Geburtstagswebsite_2.html";
                         }
                     } else {
                         // Die Antwort ist falsch; Von vorne beginnen
