@@ -230,6 +230,7 @@
                             task = task + 7;
                         } else {
                             // Falls keine Fragen mehr da sind, schauen ob der Geburtstag schon war. Wenn ja, dann weiterleiten.
+                            alert( heute.getDate() + geburtstag.getDate())
                             if (
                                 heute.getDate() < geburtstag.getDate() ||
                                 heute.getMonth() < geburtstag.getMonth() ||
