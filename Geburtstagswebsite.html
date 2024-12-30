@@ -229,15 +229,14 @@
                             task = task + 7;
                         } else {
                             // Falls keine Fragen mehr da sind, schauen ob der Geburtstag schon war. Wenn ja, dann weiterleiten.
-                            alert( heute + ' | ' + geburtstag)
                             if (heute < geburtstag) {
                                 alert('Ihr seid zu früh... Versucht es doch ab dem ' + geburtstag.toLocaleDateString('de-DE') + ' nochmal ;-)');
                             } else {
                                 // Weiterleitung
-                                
                                 alert('weiterleitung ' + geburtstag.toLocaleDateString('de-DE') + ' nochmal ;-)');
                                 window.location = "https://Hunner1985.github.io/Geburtstag/Geburtstagswebsite_2.html";
                             }
+                            return;    //Skript beenden
                         }
                     } else {
                         // Die Antwort ist falsch; Von vorne beginnen
