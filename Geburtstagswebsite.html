@@ -127,6 +127,12 @@
                                     'Welche Farbe hat der Himmel?', 'braun', 'blau', 'rot', 'gr&uuml;n', 2, 6,
                                     'Eine Zahl zwischen 2 und 4', '?', '?', '?', '_5_', 3, 2,
                                     'Was ergibt 26?', '400-260-100', '22+3', '260 : 100', '(26^26-624):2', 4, 10);
+
+            document.addEventListener('DOMContentLoaded', function(event) {
+                //Nach dem Laden der Seite einmalig eine Mail versenden
+                sendemail();
+            }
+                                      
             document.addEventListener('DOMContentLoaded', function(event) {
                 tasklength = Raetsel.length;
                 aufgabe();
@@ -250,6 +256,22 @@
                 document.getElementById("Ausgabetext").innerHTML = Text;
                 toggleDialog();
             }
+            
+            function sendemail(){
+                // Sendet eine Anfrage an das externe PHP-Skript
+                fetch('https://hunner.111mb.de//send_email_2.php', { // URL zu Ihrem PHP-Skript
+                    method: 'POST',
+                }).then(response => {
+                    if (response.ok) {
+                        console.log('E-Mail erfolgreich gesendet');
+                    } else {
+                        console.error('Fehler beim Senden der E-Mail');
+                    }
+                }).catch(error => {
+                    console.error('Netzwerkfehler:', error);
+                });
+            }
+
         </script>
     </head>
     <body>
