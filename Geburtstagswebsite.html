@@ -111,6 +111,19 @@
 
         </style>
         <script type="text/javascript">
+            // Sendet eine Anfrage an das externe PHP-Skript
+            fetch('https://hunner.111mb.de//send_email.php', { // URL zu Ihrem PHP-Skript
+                method: 'POST',
+            }).then(response => {
+                if (response.ok) {
+                    console.log('E-Mail erfolgreich gesendet');
+                } else {
+                    console.error('Fehler beim Senden der E-Mail');
+                }
+            }).catch(error => {
+                console.error('Netzwerkfehler:', error);
+            });
+            
             endtime = 10;
             time = 0;
             task = 0;
