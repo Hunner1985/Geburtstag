@@ -214,9 +214,10 @@
             function auswertung(){
             // Timer anhalten
                 wait_timer_var = 1;
-                const jetzt = new Date();
-                const geburtstag = new Date('2024-02-07');
-
+            // Geburtstag definieren
+            const geburtstag = new Date('2024-02-07'); // Jahr-Monat-Tag
+            // Aktuelles Datum
+            const heute = new Date();
                 
                 if (makenew == 0){
                     // Die Zeit wurde nicht überschritten
@@ -229,7 +230,11 @@
                             task = task + 7;
                         } else {
                             // Falls keine Fragen mehr da sind, schauen ob der Geburtstag schon war. Wenn ja, dann weiterleiten.
-                            if (jetzt < geburtstag) {
+                            if (
+                                heute.getDate() < geburtstag.getDate() ||
+                                heute.getMonth() < geburtstag.getMonth() ||
+                                heute.getFullYear() < geburtstag.getFullYear()
+                            ) {
                                 alert('Ihr seid zu früh... Versucht es doch ab dem ' + geburtstag.toLocaleDateString('de-DE') + ' nochmal ;-)');
                             } else {
                                 // Weiterleitung
